@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LaboMovie.View.MovieDetailView">
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DimGray">
+            <Frame BackgroundColor="DarkBlue" Margin="0,0,0,10">
+                <Label Text="{Binding movies.Title}"  TextColor="Crimson" HorizontalOptions="Center"  FontSize="Title" FontAttributes="Bold"/>
+            </Frame>
+            <Image Source="{Binding movies.PosterUrl}" WidthRequest="75" HeightRequest="300"/>
+            <Label TextColor="Black" HorizontalOptions="Center"  FontSize="Caption" FontAttributes="Bold">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="("/>
+                        <Span Text="{Binding movies.ReleaseYear}"/>
+                        <Span Text=")"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="0,0,0,5"/>
+
+            <Grid Padding="0,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0,5*"/>
+                    <ColumnDefinition Width="1,5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Genre" Grid.Row="0" Grid.Column="0"  TextColor="Black" HorizontalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
+                <Label Text="{Binding categories.NameCat}" Grid.Row="0" Grid.Column="1"  TextColor="DarkBlue" HorizontalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
+
+                <Label Text="Synopsis" Grid.Row="1" Grid.Column="0"  TextColor="Black" HorizontalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
+                <Label Text="{Binding movies.Synopsis}" Grid.Row="1" Grid.Column="1"  TextColor="DarkBlue" HorizontalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
+
+                <Label Text="Comment" Grid.Row="2" Grid.Column="0"  TextColor="Black" HorizontalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
+                <Label Text="{Binding movies.PersonalComment}" Grid.Row="2" Grid.Column="1"  TextColor="DarkBlue" HorizontalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
+            </Grid>
+
+            <Label Text="Distribution" TextColor="Crimson" HorizontalTextAlignment="Center" FontSize="Subtitle"></Label>
+            <ListView ItemsSource="{Binding PersonList}" SelectedItem="{Binding SelectedPerson}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label TextColor="DarkBlue" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding FirstName}"/>
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding LastName}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Command="{Binding CloseCommand}" Text="Close" TextColor="Crimson" BackgroundColor="DarkBlue" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -2,23 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LaboMovie.MainPage">
-
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
-
+    
+    <ScrollView>
+        <StackLayout BackgroundColor="DimGray">
+            <Frame BackgroundColor="DarkBlue">
+                <Label Text="Movies" TextColor="Crimson" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
+            </Frame>
+            <Frame>
+                <Picker ItemsSource="{Binding CategoryList}" ItemDisplayBinding="{Binding NameCat}"/>
+            </Frame>
+            <Frame>
+                <ScrollView>
+                    <ListView ItemsSource="{Binding MovieList}" SelectedItem="{Binding SelectedMovie}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Image Source="{Binding PosterUrl}" WidthRequest="75" HeightRequest="300"/>
+                                        <Label Text="{Binding Title}"  TextColor="Crimson" HorizontalOptions="Center"  FontSize="Title" FontAttributes="Bold"/>
+                                        <Label TextColor="Black" HorizontalOptions="Center"  FontSize="Caption" FontAttributes="Bold">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="("/>
+                                                    <Span Text="{Binding ReleaseYear}"/>
+                                                    <Span Text=")"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="-------------------------" TextColor="DarkBlue" HorizontalOptions="Center"  FontSize="Large" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

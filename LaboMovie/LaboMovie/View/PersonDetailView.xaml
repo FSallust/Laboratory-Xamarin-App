@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LaboMovie.View.PersonDetailView">
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DimGray">
+            <Label Margin="0,0,0,10"/>
+            <Image Source="{Binding person.PictureUrl}" WidthRequest="75" HeightRequest="300"/>
+            <Label TextColor="DarkBlue" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding person.FirstName}"/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding person.LastName}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button Command="{Binding CloseCommand}" Text="Close" TextColor="Crimson" BackgroundColor="DarkBlue" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

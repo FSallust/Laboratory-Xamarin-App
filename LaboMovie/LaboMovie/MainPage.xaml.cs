@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LaboMovie.Models;
+using LaboMovie.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,8 +12,9 @@ namespace LaboMovie
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(Category cat = null)
         {
+            BindingContext = new MovieViewModel(cat);
             InitializeComponent();
         }
     }
